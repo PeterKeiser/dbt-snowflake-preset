@@ -6,7 +6,7 @@ models:
     columns:
 
       - name: listing_id
-        description: Primary key fr the listing.
+        description: Primary key for the listing.
         tests:
           - unique
           - not_null
@@ -32,5 +32,31 @@ models:
         description: '{{ doc("dim_listings_cleansed_minimum_nights") }}'
         tests:
           - positive_value
+
+  - name: dim_hosts_cleansed
+    description: Cleansed table which contains Aibbnb hosts.
+    columns:
+
+      - name: host_id
+        description: Primary key for the host.
+        tests:
+          - unique
+          - not_null
+      
+      - name: host_name
+        description: The name of the host
+        tests:  
+          - unique
+          - not_null
+
+      - name: is_superhost
+        description: Describes weather the host is a superhost.
+        tests:
+          - accepted_values:
+              values: ['t', 'f']
+
+      
+
+
 
 
